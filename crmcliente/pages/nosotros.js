@@ -1,14 +1,14 @@
 import React from 'react'
 import Layout from '../components/Layout'
 
-const Index = () => {
+const Nosotros = () => {
   return ( 
     <div>
       <Layout>
-        <h2>Desde index</h2>
+        <h2>Desde Nosotros</h2>
       </Layout>
     </div>
   );
 }
  
-export default Index;
+export default Nosotros;
