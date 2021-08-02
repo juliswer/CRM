@@ -2,8 +2,20 @@ import React from 'react';
 import Layout from '../components/Layout';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
+import {gql, useMutation} from '@apollo/client';
+
+const AUTENTICAR_USUARIO = gql`
+    mutation autenticarUsuario ($input: AutenticarInput) {
+        autenticarUsuario(input: $input) {
+            token
+        }
+    }
+`;
 
 const Login = () => {
+
+    // Mutation para crear nuevos usuarios en apollo
+    const [autenticarUsuario] = useMutation(AUTENTICAR_USUARIO)
 
     const formik = useFormik({
         initialValues: {
@@ -19,8 +31,22 @@ const Login = () => {
                             .required('El password es obligatorio')
             })
         }),
-        onSubmit: valores => {
-            console.log(valores);
+        onSubmit: async valores => {
+            // console.log(valores);
+            const {email, password} = valores;
+
+            try {
+                const {data} = await autenticarUsuario({
+                    variables: {
+                        input: {
+                            email,password
+                        }
+                    }
+                });
+                console.log(data)
+            } catch (error) {
+                console.log(error);
+            }
         }
     })
 
