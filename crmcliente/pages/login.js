@@ -55,7 +55,7 @@ const Login = () => {
                                     <p className="font-bold">Error</p>
                                     <p>{formik.errors.email}</p>
                                 </div>
-                            ) : null}f
+                            ) : null}
 
                         </div>
                         <div className="mb-4">
