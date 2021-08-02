@@ -2,6 +2,7 @@ import React from 'react';
 import Layout from '../components/Layout';
 import { useFormik } from 'formik'
 import * as Yup from 'yup';
+import { useMutation, gql } from '@apollo/client'
 
 const NuevaCuenta = () => {
 
